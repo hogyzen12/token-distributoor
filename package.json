@@ -1,0 +1,19 @@
+{
+    "name": "token-distributor",
+    "version": "1.0.0",
+    "description": "Distribute tokens using Jito bundles",
+    "main": "dist-tokens.js",
+    "scripts": {
+      "start": "node dist-tokens.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@solana/spl-token": "^0.3.7",
+      "@solana/web3.js": "^1.73.0",
+      "axios": "^0.27.2",
+      "bs58": "^5.0.0",
+      "commander": "^9.4.1",
+      "uuid": "^9.0.0"
+    }
+  }
