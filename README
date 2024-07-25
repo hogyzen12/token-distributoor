@@ -1,176 +1,118 @@
-token-distributor/
-│
-├── dist-tokens.js
-├── package.json
-├── .gitignore
-├── README.md
-├── keypairs/
-│   └── example_keypair.json
-└── distri.txt
+# 🪙 Token Distributor
 
-# Token Distributor
+Effortlessly distribute tokens using Jito bundles on the Solana blockchain. This project is designed to be user-friendly, even for those new to command-line interfaces.
 
-This project allows you to distribute tokens using Jito bundles on the Solana blockchain. It's designed to be easy to use, even for those new to command-line interfaces.
+## 📋 Table of Contents
 
-## Prerequisites
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [File Formats](#file-formats)
+- [Rate Limiting](#rate-limiting)
+- [Security Note](#security-note)
+- [Support](#support)
 
-Before you begin, you'll need to install:
+## 🚀 Prerequisites
+
+Before you begin, ensure you have the following installed:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/) (which includes npm)
 
-### For Windows Users
+### 🪟 For Windows Users
 
-If you're using Windows, you'll need to set up the Windows Subsystem for Linux (WSL). Follow these steps:
+If you're using Windows, you'll need to set up the Windows Subsystem for Linux (WSL):
 
 1. Open PowerShell as Administrator and run:
-
-wsl --install
-
+   ```powershell
+   wsl --install
+   ```
 2. Restart your computer when prompted.
 3. After restart, open the "Ubuntu" app from the Start menu to set up your Linux username and password.
 
-## Installation
+## 🛠️ Installation
 
 1. Open your terminal (or Ubuntu terminal for Windows users).
-
 2. Clone the repository:
-
-2000IQ dev mode
-Certainly! I'll provide you with a complete GitHub repository structure, including the README file that walks through the setup process for beginners. Let's start with the repository structure and then move on to the README content.
-Repository Structure:
-Copytoken-distributor/
-│
-├── dist-tokens.js
-├── package.json
-├── .gitignore
-├── README.md
-├── keypairs/
-│   └── example_keypair.json
-└── distri.txt
-Now, let's create the necessary files:
-
-dist-tokens.js (rename distribute-tokens.js to dist-tokens.js for brevity)
-package.json
-.gitignore
-README.md
-
-Here's the content for each file:
-
-dist-tokens.js: Use the content from the distribute-tokens.js file you provided.
-package.json:
-
-jsonCopy{
-  "name": "token-distributor",
-  "version": "1.0.0",
-  "description": "Distribute tokens using Jito bundles",
-  "main": "dist-tokens.js",
-  "scripts": {
-    "start": "node dist-tokens.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@solana/spl-token": "^0.3.7",
-    "@solana/web3.js": "^1.73.0",
-    "axios": "^0.27.2",
-    "bs58": "^5.0.0",
-    "commander": "^9.4.1",
-    "uuid": "^9.0.0"
-  }
-}
-
-.gitignore:
-
-Copynode_modules/
-keypairs/*
-!keypairs/example_keypair.json
-
-README.md:
-
-markdownCopy# Token Distributor
-
-This project allows you to distribute tokens using Jito bundles on the Solana blockchain. It's designed to be easy to use, even for those new to command-line interfaces.
-
-## Prerequisites
-
-Before you begin, you'll need to install:
-
-- [Git](https://git-scm.com/downloads)
-- [Node.js](https://nodejs.org/) (which includes npm)
-
-### For Windows Users
-
-If you're using Windows, you'll need to set up the Windows Subsystem for Linux (WSL). Follow these steps:
-
-1. Open PowerShell as Administrator and run:
-wsl --install
-Copy2. Restart your computer when prompted.
-3. After restart, open the "Ubuntu" app from the Start menu to set up your Linux username and password.
-
-## Installation
-
-1. Open your terminal (or Ubuntu terminal for Windows users).
-
-2. Clone the repository:
-git clone https://github.com/your-username/token-distributor.git
-
+   ```bash
+   git clone https://github.com/your-username/token-distributor.git
+   ```
 3. Navigate to the project directory:
-
-cd token-distributor
-
+   ```bash
+   cd token-distributor
+   ```
 4. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+5. Make the script executable:
+   ```bash
+   chmod u+x ./dist-tokens.js
+   ```
 
-npm install
+## 🖥️ Usage
 
-## Usage
+To run the token distributor, use the following command structure:
 
-To run the token distributor, use the following command:
+```bash
+./dist-tokens.js -k ./keypairs -r ./distri.txt -m TOKEN_MINT_ADDRESS -t TIP_ACCOUNT_ADDRESS
+```
 
-node dist-tokens.js -k ./keypairs -r ./distri.txt -m TOKEN_MINT_ADDRESS -t TIP_ACCOUNT_ADDRESS
+### 🔑 Command Options
 
-Replace `TOKEN_MINT_ADDRESS` with the address of the token you want to distribute, and `TIP_ACCOUNT_ADDRESS` with one of the following tip accounts:
-
-- 96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5
-- HFqU5x63VTqvQss8hp11i4wVV8bD44PvwucfZ2bU7gRe
-- Cw8CFyM9FkoMi7K7Crf6HNQqf4uEMzpKw6QNghXLvLkY
-- ADaUMid9yfUytqMBgopwjb2DTLSokTSzL1zt6iGPaS49
-- DfXygSm4jCyNCybVYYK6DwvWqjKee8pbDmJGcLWNDXjh
-- ADuUkR4vqLUMWXxW9gh6D6L8pMSawimctcNZ5pGwDcEt
-- DttWaMuVvTiduZRnguLF7jNxTgiMBZ1hyAumKUiL2KRL
-- 3AVi9Tg9Uo68tJfuvoKvqKNWKkC5wPdSSdeBnizKZ6jT
-
-### Options
-
-- `-k, --key-folder <path>`: Path to the folder containing wallet key files (required)
-- `-r, --recipient-file <path>`: Path to the file containing recipient addresses and amounts (required)
-- `-m, --token-mint <address>`: Token mint address (required)
-- `-t, --tip-account <address>`: Tip account address (required)
+- `-k, --key-folder <path>`: Path to the folder containing wallet key files (default: ./keypairs)
+- `-r, --recipient-file <path>`: Path to the file containing recipient addresses and amounts (default: ./distri.txt)
+- `-m, --token-mint <address>`: Token mint address (default: 5LafQUrVco6o7KMz42eqVEJ9LW31StPyGjeeu5sKoMtA)
+- `-t, --tip-account <address>`: Tip account address (default: 96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5)
 - `-a, --tip-amount <amount>`: Tip amount in lamports (default: 100000)
 
-## File Formats
+### 🚀 Example Commands
+
+Here are some ready-to-use command examples:
+
+1. Using default values:
+   ```bash
+   ./dist-tokens.js
+   ```
+
+2. Specifying a custom token mint and tip account:
+   ```bash
+   ./dist-tokens.js -m YOUR_TOKEN_MINT_ADDRESS -t YOUR_TIP_ACCOUNT_ADDRESS
+   ```
+
+3. Using custom file paths and tip amount:
+   ```bash
+   ./dist-tokens.js -k ./my_keypairs -r ./my_recipients.txt -a 200000
+   ```
+
+## 📁 File Formats
 
 ### Keypair Files
-
-Place your Solana wallet keypair JSON files in the `keypairs` folder. An example keypair file is provided for reference.
+Place your Solana wallet keypair JSON files in the keypairs folder. Each file should contain a valid Solana keypair.
 
 ### Recipient File
-
-The recipient file (`distri.txt`) should contain one recipient per line in the format:
-
+The recipient file (default: distri.txt) should contain one recipient per line in the format:
+```
 ADDRESS,AMOUNT
+```
 
-For example:
+Example distri.txt:
+```
 8SmfzHj35ZJXHQPMCWZrEHfdyWApykcSuRmuWNj193V2,100
 EZ5LQMzATorMNsc4auJRHGRhy1eNffowUAKRqvFtkfu,420
 DLvsEgCFfpmVeT1wW7eonc6n4om5jWbXF6shMHW3RZez,12
+```
 
-## Security Note
+## 📊 Rate Limiting
 
-Never share your private keys or keypair files. The example keypair is for demonstration purposes only and should not be used on mainnet.
+The script implements rate limiting to avoid overloading the Jito bundle API endpoint. If a "Too Many Requests" error is encountered, the script will automatically retry with increasing delays between attempts. The minimum delay between retries is set to 30 seconds to ensure compliance with API rate limits.
 
-## Support
+## 🔒 Security Note
+
+⚠️ IMPORTANT: Never share your private keys or keypair files. Ensure that your keypair files are stored securely and are not accessible to unauthorized parties.
+
+## 🆘 Support
 
 If you encounter any issues or have questions, please open an issue on the GitHub repository.
 
-Happy token distributing!
+Happy token distributing! 🎉
